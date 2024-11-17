@@ -7,13 +7,14 @@ if (!isset($_SESSION["login"])) {
 }
 //koneksi ke dbms
 
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "tokoonline", 3307);
 //cek apakah tombol submit sudah pernah di tekan
 if (isset($_POST["submit"])) {
 	if (tambah_kategori($_POST) > 0) {
 		echo 
 		"<script>
 		alert ('kategori berhasil di tambah!');
+		document.location.href = 'kategori.php';
 		</script>";
 
 	} else {

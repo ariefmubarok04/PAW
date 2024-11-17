@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])) {
 }
 //koneksi ke dbms
 
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "tokoonline", 3307);
 //cek apakah tombol submit sudah pernah di tekan
 if (isset($_POST["submit"])) {
 	if (tambah($_POST) > 0) {
@@ -100,8 +100,14 @@ $merek = query("SELECT * FROM merek");
 					</div>
 				</div>
 				<div class="input-group">
-					<label for="deskripsi">deskripsi</label>
-					<textarea class="input" rows="4" type="text" name="deskripsi" id="deskripsi" placeholder="masukkan deskripsi produk" required autocomplete="off"></textarea>
+					<label for="deskripsi">deskripsi produk</label>
+					<textarea class="input" rows="9" type="text" name="deskripsi" id="deskripsi" placeholder="masukkan deskripsi produk" required autocomplete="off">kelengkapan : 
+lensa : 
+kapasitas baterai : 
+tipe sensor : 
+warna : 
+lensa : 
+resolusi :</textarea>
 				</div>
 				<button type="submit" name="submit">Tambah Data</button>
 		</form>

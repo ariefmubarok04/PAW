@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //koneksi ke databasae
-$connect = mysqli_connect("localhost", "root", "", "tokoonline");
+$connect = mysqli_connect("localhost", "root", "", "tokoonline", 3307);
 
 function query($query) {
 	global $connect;
@@ -29,8 +29,7 @@ function tambah($data) {
 	}
 
 	$query = "INSERT INTO kamera
-				values
-			('','$merek','$tipe','$gambar','$kondisi','$deskripsi','$harga')
+			values ('','$gambar','$tipe','$kondisi','$harga','$deskripsi','$merek','')
 	";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
