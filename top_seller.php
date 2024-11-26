@@ -1,6 +1,6 @@
 <?php
 
-require 'funcions.php';
+require 'functions.php';
 
 if(isset($_POST['id'])){
 	mysqli_query($connect, "UPDATE kamera SET top_seller=0");

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //koneksi ke databasae
-$connect = mysqli_connect("localhost", "root", "", "tokoonline", 3307);
+$connect = mysqli_connect("localhost", "root", "", "tokoonline", 3306);
 
 function query($query) {
 	global $connect;
@@ -28,8 +28,8 @@ function tambah($data) {
 		return false;
 	}
 
-	$query = "INSERT INTO kamera
-			values ('','$gambar','$tipe','$kondisi','$harga','$deskripsi','$merek','')
+	$query = "INSERT INTO kamera 
+			values (NULL,'$gambar','$tipe','$kondisi','$harga','$deskripsi','$merek','0')
 	";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
@@ -149,7 +149,7 @@ function registrasi($data) {
 	$password = password_hash($password, PASSWORD_DEFAULT);
 
 	//tambahkan user ke database
-	mysqli_query($connect, "INSERT INTO user values('', '$username', '$password')");
+	mysqli_query($connect, "INSERT INTO user values(NULL, '$username', '$password')");
 
 	return mysqli_affected_rows($connect);
 }
@@ -158,10 +158,7 @@ function tambah_kategori($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
 	$merek = htmlspecialchars($data["merek"]);
-	$query = "INSERT INTO merek
-				values
-			('','$merek')
-	";
+	$query = "INSERT INTO merek (merek) values ('$merek')";
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
 }	

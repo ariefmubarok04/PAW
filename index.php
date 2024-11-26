@@ -1,6 +1,6 @@
 <?php 
 
-require ('funcions.php');
+require ('functions.php');
 $kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id ORDER BY id");
 $new_product = $kamera[count($kamera)-1];
 $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id WHERE top_seller = 1")[0];
@@ -12,11 +12,11 @@ $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON mere
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard</title>
+	<title>WEABOO - Growtopia Anime Community</title>
 	<!-- fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&family=Poppins:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 	<!-- icons -->
 		<script src="https://unpkg.com/feather-icons"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,20 +24,138 @@ $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON mere
 		<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-	<!-- Navigasi Start -->
-	<nav class="navigasi">
-		<div class="nav-kiri">
-			<img src="img/micam.png">
-			<p>MiCAM</p>
+	<?php
+		include "header.php"
+	?>
+	<div class="gateway" style="position: fixed; top: 20; right: 0; margin-right: 30px;">
+		Filter
+	</div>
+
+	<div class="container">
+		<div class="photo-group">
+			<div class="photo-box">
+				<div>
+					<a href="detail.php">
+						<img src="https://s3.amazonaws.com/world.growtopiagame.com/weeaboo.png" alt="Komi-San" >
+					</a>
+				</div>
+			</div>
+			<table class="photo-detail">
+				<tr>
+					<td>Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Komi-San</td>
+				</tr>
+				<tr>
+					<td>Anime Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Komi-san wa Komyushou Desu</td>
+				</tr>
+				<tr>
+					<td>World</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>WEEABOO</td>
+				</tr>
+				<tr>
+					<td>Author</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Waifou</td>
+				</tr>
+			</table>
 		</div>
-		<div class="nav-kanan">
-			<a href="">Dashboard</a>
-			<a href="halamanuser/halaman_produk.php">Product</a>
-			<a href="halamanuser/about.php">About us</a>
+		<div class="photo-group">
+			<div class="photo-box">
+				<div>
+					<img src="https://s3.amazonaws.com/world.growtopiagame.com/nishimiya.png" alt="Nishimiya"  height="100%">
+				</div>
+			</div>
+			<table class="photo-detail">
+				<tr>
+					<td>Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Nishimiya Shouko</td>
+				</tr>
+				<tr>
+					<td>Anime Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Koe no Katachi</td>
+				</tr>
+				<tr>
+					<td>World</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>NISHIMIYA</td>
+				</tr>
+				<tr>
+					<td>Author</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Schwi</td>
+				</tr>
+			</table>
 		</div>
-	</nav>
-	<!-- Navigasi End -->
-	<section class="landing-image">
+		<div class="photo-group">
+			<div class="photo-box">
+				<div>
+					<img src="https://s3.amazonaws.com/world.growtopiagame.com/rezero.png" alt="Echidna" >
+				</div>
+			</div>
+			<table class="photo-detail">
+				<tr>
+					<td>Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Echidna</td>
+				</tr>
+				<tr>
+					<td>Anime Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Re: Zero, Season 2</td>
+				</tr>
+				<tr>
+					<td>World</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>REZERO</td>
+				</tr>
+				<tr>
+					<td>Author</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>prxerkun</td>
+				</tr>
+			</table>
+		</div>
+		<div class="photo-group">
+			<div class="photo-box">
+				<div>
+					<img src="https://s3.amazonaws.com/world.growtopiagame.com/astolfo.png" alt="Astolfo" >
+				</div>
+			</div>
+			<table class="photo-detail">
+				<tr>
+					<td>Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Astolfo</td>
+				</tr>
+				<tr>
+					<td>Anime Name</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>Fate Series</td>
+				</tr>
+				<tr>
+					<td>World</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>ASTOLFO</td>
+				</tr>
+				<tr>
+					<td>Author</td>
+					<td style="padding-inline: 10px;">:</td>
+					<td>KOMEKO</td>
+				</tr>
+			</table>
+		</div>
+    </div>
+	<?php
+		include "footer.php"
+	?>
+	<!-- End of Navigation Bar -->
+	<!-- <section class="landing-image">
 		<p>SELAMAT DATANG DI <span>MiCAM</span></p>
 	</section>
 	<section class="promo">
@@ -109,7 +227,7 @@ $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON mere
 				<a href="https://youtube.com/@micamera888"><img src="img/youtube.png"></a>
 			</div>
 		</div>
-	</footer>
+	</footer> -->
 
 	<!-- icons -->
 	<script>

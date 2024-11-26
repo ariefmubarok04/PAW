@@ -1,74 +1,117 @@
 :root {
-	--primary: #21130d;
-	--bg: #fbfcfa;
+	--primary: black;
+	--bg: rgba(0, 0, 0, 0.9);
 }
 
-* {
-	font-family: 'Oswald', sans-serif;
+*, *:before, *:after {
+	font-family: "Pixelify Sans", sans-serif;
+	font-style: normal;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 	outline: none;
-	text-decoration: none;
 	border: none;
 }
 
 body {
 	background-color: var(--bg);
-	color: black;
+	color: white;
+}
+td {
+    vertical-align: top;
+    padding-bottom: 15px;
 }
 
-.navigasi {
+#navbar {
+	display: grid;
+	position: sticky;
 	width: 100%;
-	height: 50px;
+	height: auto;
 	background-color: var(--primary);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px 3%;
-	position: fixed;
+	grid-template-columns: 1fr 1fr;
+	padding: 5px 1%;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 99;
+	box-shadow: 2px 5px rgba(19, 15, 15, 0.8);
 	/*
 	box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.8);
 	-webkit-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
 	-moz-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
 	*/
 }
-
-.navigasi .nav-kiri {
-	background-color: var(--primary);
-	width: 250px;
-	height: 36px;
-	font-size: 20px;
+#navbar-main {
+    display: flex;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#navbar-title {
+    font-size: 28px;
+}
+#sub-title {
+    font-size: 20px;
+    display: block;
 }
 
-.nav-kiri img {
+#navbar-secondary {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	padding-right: 5%;
+}
+
+.gateway {
+    margin-right: 10px;
+    border: white solid;
+    padding: 4px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+	width: 100%;
+	height: 100%;
+    padding-left: 30px;
+    padding-block: 30px;
+}
+
+.photo-group {
+    margin-bottom: 50px;
+    width: 33%;
+	height: auto;
+}
+.photo-detail {
+	padding-right: 30px;
+}
+@media screen and ( max-width: 1060px){
+	.photo-group {
+		width: 50%;
+	}
+}
+@media screen and (max-width: 480px) {
+	.photo-group {
+		width: 100%;
+	}
+}
+.photo-box {
+    border: 1px solid black;
+    margin-right:27px;
+}
+.photo-box img {
+	width: 100%;
+}
+
+/* .nav-kiri img {
 	width: 50px;
 	height: 50px;
 	float: left;
-}
-
-.navigasi .nav-kiri p {
-	font-style: oblique;
-	color: var(--bg);
-}
-
-.navigasi .nav-kanan {
-	width: 500px;
-	height: 36px;
-	background-color: var(--primary);
-	display: flex;
-	justify-content: flex-end;
-}
-
-.navigasi .nav-kanan a {
-	display: inline-block;
-	font-size: 18px;
-	margin: 0 16px;
-	color: var(--bg);
 }
 
 .landing-image {
@@ -139,7 +182,6 @@ body {
 .order-icon a {
 	width: 60%;
 	color: white;
-	font-family: 'Poppins', sans-serif;
 }
 
 .new-promo p {
@@ -231,4 +273,4 @@ footer .social {
 .instagram a img {
 	width: 20px;
 	height: 20px;
-}
+} */

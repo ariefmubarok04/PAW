@@ -1,5 +1,5 @@
 <?php 
-require '../funcions.php';
+require '../functions.php';
 
 if (!isset($_SESSION["login"])) {
 	header('Location: login.php');
@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])) {
 }
 //koneksi ke dbms
 
-$connect = mysqli_connect("localhost", "root", "", "tokoonline", 3307);
+$connect = mysqli_connect("localhost", "root", "", "tokoonline", 3306);
 //cek apakah tombol submit sudah pernah di tekan
 if (isset($_POST["submit"])) {
 	if (tambah_kategori($_POST) > 0) {

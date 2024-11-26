@@ -1,8 +1,8 @@
 <?php
-require 'funcions.php';
+require 'functions.php';
 
 if (isset($_SESSION["login"])) {
-	header("Location: halaman_admin.php");
+	header("Location: index.php");
 	exit;
 }
 
@@ -20,7 +20,7 @@ if (isset($_POST["login"])) {
 			//set session
 			$_SESSION["login"] = true;
 			$_SESSION["user"] = $row;
-			header("Location: halaman_admin.php");
+			header("Location: index.php");
 			exit;
 		}
 	}	$error = true;

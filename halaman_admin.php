@@ -1,5 +1,5 @@
 <?php
-require ('funcions.php');
+require ('functions.php');
 if (!isset($_SESSION["login"])) {
 	header('Location: login.php');
 	exit;
