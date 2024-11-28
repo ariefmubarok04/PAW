@@ -1,3 +1,6 @@
+<head>
+	<link rel="stylesheet" href="css/public/header.css">
+</head>
 <!-- Navigation Bar -->
 	<nav id="navbar">
 		<!-- LEFT GRID -->
@@ -10,10 +13,17 @@
 				<div id="sub-title">Growtopia Anime Community</div>
 			</div>
 		 </div>
+		 <div id="navbar-middle">
+			<form action="" method="get">
+				<input type="text" name="keyword" size="auto" autofocus placeholder="Find your Char/Anime" autocomplete="on">
+				<button type="submit" name="cari">Cari Produk!</button>
+			</form>
+		 </div>
 		<!-- RIGHT GRID -->
 		<div id="navbar-secondary">
 			<?php if (isset($_SESSION['user'])) {?>
 				<div style="margin-right: 10px"><?= $_SESSION['user']['username'] ?></div>
+				<a href="upload.php" class="gateway">Upload</a>
 				<a href="logout.php" class="gateway">Logout</a>
 				<?php }else{?>
 					<a href="register.php" class="gateway">Register</a>

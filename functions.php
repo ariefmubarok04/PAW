@@ -16,30 +16,39 @@ function query($query) {
 function tambah($data) {
 	global $connect;
 		// ambil data dari tiap elemen dalam form
-	$merek = htmlspecialchars($data["merek_id"]);
-	$tipe = htmlspecialchars($data["tipe"]);
-	$kondisi = htmlspecialchars($data["kondisi"]);
-	$deskripsi = htmlspecialchars($data["deskripsi"]);
-	$harga = htmlspecialchars($data["harga"]);
+	$char = htmlspecialchars($data["char"]);
+	$anime = htmlspecialchars($data["anime"]);
+	$world = htmlspecialchars($data["world"]);
+	$user = htmlspecialchars($data["user"]);
 
 //upload gambar
-	$gambar = upload();
-	if (!$gambar) {
+	$image = upload();
+	if (!$image) {
 		return false;
 	}
 
-	$query = "INSERT INTO kamera 
-			values (NULL,'$gambar','$tipe','$kondisi','$harga','$deskripsi','$merek','0')
+	$query = "INSERT INTO pixel 
+			values (NULL,'$image','$char','$anime','$world','$user')
 	";
+
+	if ($connect->query($query)===TRUE) {
+		$pixel_id = $connect->insert_id;
+
+		$user_id = $_SESSION['user']['id'];
+		$query = "INSERT INTO pixel_user (pixel_id, user_id) 
+			values ('$pixel_id','$user_id')
+		";
+	}
+
 	mysqli_query($connect, $query);
 	return mysqli_affected_rows($connect);
 }	
 
 function upload() {
-	$namaFile = $_FILES["gambar"]["name"];
-	$ukuranFile = $_FILES["gambar"]["size"];
-	$error = $_FILES["gambar"]["error"];
-	$tmpName = $_FILES["gambar"]["tmp_name"];
+	$namaFile = $_FILES["image"]["name"];
+	$ukuranFile = $_FILES["image"]["size"];
+	$error = $_FILES["image"]["error"];
+	$tmpName = $_FILES["image"]["tmp_name"];
 
 	//cek apakah ada gambar yang di upload
 	if ($error === 4) {
@@ -49,7 +58,7 @@ function upload() {
 		return false;
 	}
 	//cek apakah yang diupload adalah gambar atau bukan
-	$ekstensiGambarValid = ['jpg','jpeg','png'];
+	$ekstensiGambarValid = ['jpg','jpeg','png', 'webp'];
 	$ekstensiGambar = (explode('.', $namaFile));
 	$ekstensiGambar = strtolower(end($ekstensiGambar));
 
@@ -66,7 +75,7 @@ function upload() {
 	$namaFileBaru .= '.';
 	$namaFileBaru .= $ekstensiGambar;
 
-	move_uploaded_file($tmpName, '../img/' . $namaFileBaru);
+	move_uploaded_file($tmpName, 'img/' . $namaFileBaru);
 	return 'img/' . $namaFileBaru;
 
 }

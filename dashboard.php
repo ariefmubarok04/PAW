@@ -1,9 +1,9 @@
 <?php 
 
 require ('functions.php');
-$kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id ORDER BY id");
-$new_product = $kamera[count($kamera)-1];
-$top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id WHERE top_seller = 1")[0];
+$pixel = query("SELECT p.*, u.username FROM pixel p INNER JOIN user u ON p.user_id = u.id ");
+// $new_product = $kamera[count($kamera)-1];
+// $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id WHERE top_seller = 1")[0];
 
 //tombol cari ditekan
 if (isset($_GET["cari"])) {
@@ -36,38 +36,40 @@ if (isset($_GET["cari"])) {
 	</div>
 
 	<div class="container">
-		<div class="photo-group">
-			<div class="photo-box">
+        <?php foreach($pixel as $data) : ?>
+        <div class="photo-group">
+            <div class="photo-box">
 				<div>
 					<a href="detail.php">
-						<img src="https://s3.amazonaws.com/world.growtopiagame.com/weeaboo.png" alt="Komi-San" >
+						<img src="<?php echo $data["image"]; ?>" alt="Komi-San" >
 					</a>
 				</div>
 			</div>
 			<table class="photo-detail">
-				<tr>
-					<td>Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Komi-San</td>
-				</tr>
-				<tr>
-					<td>Anime Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Komi-san wa Komyushou Desu</td>
-				</tr>
-				<tr>
-					<td>World</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>WEEABOO</td>
-				</tr>
-				<tr>
-					<td>Author</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Waifou</td>
-				</tr>
-			</table>
-		</div>
-		<div class="photo-group">
+                    <tr>
+                        <td>Name</td>
+                        <td style="padding-inline: 10px;">:</td>
+                        <td><?php echo $data["char"]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Anime Name</td>
+                        <td style="padding-inline: 10px;">:</td>
+                        <td><?php echo $data["anime"]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>World</td>
+                        <td style="padding-inline: 10px;">:</td>
+                        <td><?php echo $data["world"]; ?></td>
+                    </tr>
+                    <tr>
+                        <td>Author</td>
+                        <td style="padding-inline: 10px;">:</td>
+                        <td><?php echo $data["username"]; ?></td>
+                    </tr>
+                </table>
+            </div>
+            <?php endforeach; ?>
+		<!-- <div class="photo-group">
 			<div class="photo-box">
 				<div>
 					<img src="https://s3.amazonaws.com/world.growtopiagame.com/nishimiya.png" alt="Nishimiya"  height="100%">
@@ -153,7 +155,7 @@ if (isset($_GET["cari"])) {
 					<td>KOMEKO</td>
 				</tr>
 			</table>
-		</div>
+		</div> -->
     </div>
 	<?php
 		include "footer.php"

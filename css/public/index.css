@@ -22,48 +22,6 @@ td {
     padding-bottom: 15px;
 }
 
-#navbar {
-	display: grid;
-	position: sticky;
-	width: 100%;
-	height: auto;
-	background-color: var(--primary);
-	grid-template-columns: 1fr 1fr;
-	padding: 5px 1%;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 99;
-	box-shadow: 2px 5px rgba(19, 15, 15, 0.8);
-	/*
-	box-shadow: -1px 1px 1px 0px rgba(0,0,0,0.8);
-	-webkit-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
-	-moz-box-shadow: -1px 3px 6px 0px rgba(0,0,0,0.8);
-	*/
-}
-#navbar-main {
-    display: flex;
-    height: auto;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-#navbar-title {
-    font-size: 28px;
-}
-#sub-title {
-    font-size: 20px;
-    display: block;
-}
-
-#navbar-secondary {
-	display: flex;
-	justify-content: end;
-	align-items: center;
-	padding-right: 5%;
-}
-
 .gateway {
     margin-right: 10px;
     border: white solid;
