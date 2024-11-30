@@ -1,9 +1,7 @@
 <?php 
 
-require ('functions.php');
+require ('component/functions.php');
 $pixel = query("SELECT p.*, u.username FROM pixel p INNER JOIN user u ON p.user_id = u.id ");
-// $new_product = $kamera[count($kamera)-1];
-// $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id WHERE top_seller = 1")[0];
 
 //tombol cari ditekan
 if (isset($_GET["cari"])) {
@@ -29,216 +27,71 @@ if (isset($_GET["cari"])) {
 </head>
 <body>
 	<?php
-		include "header.php"
+		include "component/header.php"
 	?>
-	<div class="gateway" style="position: fixed; top: 20; right: 0; margin-right: 30px;">
-		Filter
-	</div>
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+	<span id="filter" class="gateway filter-btn" onclick="openNav()">Filter</span>
+	
 
 	<div class="container">
         <?php foreach($pixel as $data) : ?>
-        <div class="photo-group">
-            <div class="photo-box">
-				<div>
-					<a href="detail.php">
-						<img src="<?php echo $data["image"]; ?>" alt="Komi-San" >
-					</a>
+			<div class="photo-group">
+				<div class="photo-box">
+					<div>
+						<a href="detail.php?id=<?php echo $data["id"]; ?>">
+							<img src="https://<?php echo $data["image"]; ?>" alt=<?php echo $data["char"]; ?> >
+						</a>
+					</div>
 				</div>
-			</div>
-			<table class="photo-detail">
-                    <tr>
-                        <td>Name</td>
-                        <td style="padding-inline: 10px;">:</td>
-                        <td><?php echo $data["char"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Anime Name</td>
-                        <td style="padding-inline: 10px;">:</td>
-                        <td><?php echo $data["anime"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>World</td>
-                        <td style="padding-inline: 10px;">:</td>
-                        <td><?php echo $data["world"]; ?></td>
-                    </tr>
-                    <tr>
-                        <td>Author</td>
-                        <td style="padding-inline: 10px;">:</td>
-                        <td><?php echo $data["username"]; ?></td>
-                    </tr>
-                </table>
+				<table class="photo-detail">
+					<tr>
+						<td>Name</td>
+						<td style="padding-inline: 10px;">:</td>
+						<td><?php echo $data["char"]; ?></td>
+					</tr>
+					<tr>
+						<td>Anime/Game Name</td>
+						<td style="padding-inline: 10px;">:</td>
+						<td><?php echo $data["anime"]; ?></td>
+					</tr>
+					<tr>
+						<td>World</td>
+						<td style="padding-inline: 10px;">:</td>
+						<td style="text-transform: uppercase;"><?php echo $data["world"]; ?></td>
+					</tr>
+					<tr>
+						<td>Author</td>
+						<td style="padding-inline: 10px;">:</td>
+						<td><?php echo $data["username"]; ?></td>
+					</tr>
+				</table>
             </div>
-            <?php endforeach; ?>
-		<!-- <div class="photo-group">
-			<div class="photo-box">
-				<div>
-					<img src="https://s3.amazonaws.com/world.growtopiagame.com/nishimiya.png" alt="Nishimiya"  height="100%">
-				</div>
-			</div>
-			<table class="photo-detail">
-				<tr>
-					<td>Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Nishimiya Shouko</td>
-				</tr>
-				<tr>
-					<td>Anime Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Koe no Katachi</td>
-				</tr>
-				<tr>
-					<td>World</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>NISHIMIYA</td>
-				</tr>
-				<tr>
-					<td>Author</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Schwi</td>
-				</tr>
-			</table>
-		</div>
-		<div class="photo-group">
-			<div class="photo-box">
-				<div>
-					<img src="https://s3.amazonaws.com/world.growtopiagame.com/rezero.png" alt="Echidna" >
-				</div>
-			</div>
-			<table class="photo-detail">
-				<tr>
-					<td>Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Echidna</td>
-				</tr>
-				<tr>
-					<td>Anime Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Re: Zero, Season 2</td>
-				</tr>
-				<tr>
-					<td>World</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>REZERO</td>
-				</tr>
-				<tr>
-					<td>Author</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>prxerkun</td>
-				</tr>
-			</table>
-		</div>
-		<div class="photo-group">
-			<div class="photo-box">
-				<div>
-					<img src="https://s3.amazonaws.com/world.growtopiagame.com/astolfo.png" alt="Astolfo" >
-				</div>
-			</div>
-			<table class="photo-detail">
-				<tr>
-					<td>Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Astolfo</td>
-				</tr>
-				<tr>
-					<td>Anime Name</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>Fate Series</td>
-				</tr>
-				<tr>
-					<td>World</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>ASTOLFO</td>
-				</tr>
-				<tr>
-					<td>Author</td>
-					<td style="padding-inline: 10px;">:</td>
-					<td>KOMEKO</td>
-				</tr>
-			</table>
-		</div> -->
+		<?php endforeach; ?>
     </div>
 	<?php
-		include "footer.php"
+		include "component/footer.php"
 	?>
-	<!-- End of Navigation Bar -->
-	<!-- <section class="landing-image">
-		<p>SELAMAT DATANG DI <span>MiCAM</span></p>
-	</section>
-	<section class="promo">
-		<div class="new-promo">
-			<p class="line">NEW PRODUCT</p>
-			<div class="items-np">
-				<div class="left-np">
-					<img style="width: 300px; height: 300px;" src="<?php echo $new_product['gambar']; ?>" alt="gambar kamera">
-					<p>
-						<?php echo $new_product["merek"];?> <?php echo $new_product["tipe"] ?>
-					</p>
-				</div>
-				<div class="right-np">
-					<ul>
-						<li>harga : Rp.<?php echo $new_product["harga"]; ?></li>
-						<li>kondisi : <?php echo $new_product["kondisi"]; ?></li>
-						<li>deskripsi produk : <br><?php echo nl2br($new_product["deskripsi"]); ?></li>
-					</ul>
-					<div class="order-icon">
-						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$new_product['merek'].' '.$new_product['tipe']) ?>&phone=+6289694018787">
-							<div class="pesan">
-								<img src="img/whatsapp.png">
-								<p>Pesan Via WhatsApp</p>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section class="promo">
-		<div class="new-promo">
-			<p class="line">TOP SELLER</p>
-			<div class="items-np">
-				<div class="left-np">
-					<img style="width: 300px; height: 300px;" src="<?php echo $top_seller['gambar']; ?>" alt="gambar kamera">
-					<p>
-						<?php echo $top_seller["merek"];?> <?php echo $top_seller["tipe"] ?>
-					</p>
-				</div>
-				<div class="right-np">
-					<ul>
-						<li>harga : Rp.<?php echo $top_seller["harga"]; ?></li>
-						<li>kondisi : <?php echo $top_seller["kondisi"]; ?></li>
-						<li>deskripsi produk : <br><?php echo nl2br($top_seller["deskripsi"]); ?></li>
-					</ul>
-					<div class="order-icon">
-						<a href="whatsapp://send?text=<?= urlencode("Halo saya ingin pesan ".$top_seller['merek'].' '.$top_seller['tipe']) ?>&phone=+6289694018787">
-						<div class="pesan">
-							<img src="img/whatsapp.png">
-								<p>Pesan Via WhatsApp</p>
-						</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<footer>
-		<p>OUR SOCIAL MEDIA</p>
-		<div class="social">
-			<div class="instagram">
-				<a href="https://instagram.com/micam888.camera?igshid=MzNlNGNkZWQ4Mg=="><img src="img/instagram.png"></a>
-			</div>
-			<div class="tiktok">
-				<a href="https://www.tiktok.com/@micam888camera?_t=8dGmxLdwReb&_r=1"><img src="img/tik-tok.png"></a>
-			</div>
-			<div class="youtube">
-				<a href="https://youtube.com/@micamera888"><img src="img/youtube.png"></a>
-			</div>
-		</div>
-	</footer> -->
 
 	<!-- icons -->
 	<script>
-      feather.replace()
-    </script>
+        // feather.replace()
+        function openNav() {
+        document.getElementById("myNav").style.height = "50%";
+        document.getElementById("filter").classList.add("shift");
+        }
 
+        function closeNav() {
+        document.getElementById("myNav").style.height = "0%";
+        document.getElementById("filter").classList.remove("shift");
+        }
+    </script>
 </body>
 </html>

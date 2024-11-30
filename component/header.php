@@ -24,7 +24,7 @@
 			<?php if (isset($_SESSION['user'])) {?>
 				<div style="margin-right: 10px"><?= $_SESSION['user']['username'] ?></div>
 				<a href="upload.php" class="gateway">Upload</a>
-				<a href="logout.php" class="gateway">Logout</a>
+				<a href="component/logout.php" class="gateway">Logout</a>
 				<?php }else{?>
 					<a href="register.php" class="gateway">Register</a>
 					<a href="login.php" class="gateway">Login</a>

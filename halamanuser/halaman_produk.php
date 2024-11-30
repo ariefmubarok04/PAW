@@ -1,6 +1,6 @@
 <?php
 
-require ('../functions.php');
+require ('../component/functions.php');
 
 //ambil data dari tabel kamera /query data kamera
 $kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id");

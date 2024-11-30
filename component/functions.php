@@ -15,17 +15,18 @@ function query($query) {
 
 function tambah($data) {
 	global $connect;
-		// ambil data dari tiap elemen dalam form
+	// ambil data dari tiap elemen dalam form
+	$image = htmlspecialchars($data["image"]);
 	$char = htmlspecialchars($data["char"]);
 	$anime = htmlspecialchars($data["anime"]);
 	$world = htmlspecialchars($data["world"]);
 	$user = htmlspecialchars($data["user"]);
 
 //upload gambar
-	$image = upload();
-	if (!$image) {
-		return false;
-	}
+	// $image = upload();
+	// if (!$image) {
+	// 	return false;
+	// }
 
 	$query = "INSERT INTO pixel 
 			values (NULL,'$image','$char','$anime','$world','$user')
@@ -38,6 +39,8 @@ function tambah($data) {
 		$query = "INSERT INTO pixel_user (pixel_id, user_id) 
 			values ('$pixel_id','$user_id')
 		";
+		header("Location: dashboard.php");
+        exit();
 	}
 
 	mysqli_query($connect, $query);

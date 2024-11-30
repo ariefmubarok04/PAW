@@ -28,18 +28,19 @@ table {
     justify-content: center;
     font-size: larger;
     padding-block: 20px;
+    width: 100%;
 }
 
 .container {
-	width: 90%;
+	width: 85%;
 	margin: 0 auto;
 	padding: 0 30px;
 	padding-bottom: 30px;
 }
 
 .group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
 }
 .group label {
     position: relative;
@@ -98,7 +99,7 @@ button {
     font-size: 100%;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 496px) {
     .container {
         width: 100%;
         padding: 0px 10px;
@@ -112,9 +113,9 @@ button {
         padding: 1px 3px
     }
 }
-@media screen and (min-width:426) and (max-width: 600px) {
+@media screen and (min-width: 497px) and (max-width: 600px) {
     .container {
-        width: 90%;
+        width: 92%;
         padding: 0px 20px;
     }
 

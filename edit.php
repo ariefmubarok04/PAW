@@ -1,5 +1,5 @@
 <?php 
-require '../component/functions.php';
+require 'component/functions.php';
 
 if (!isset($_SESSION["login"])) {
 	header('Location: login.php');
@@ -25,8 +25,7 @@ if (isset($_POST["submit"])) {
 }
 $id = $_GET['id'];
 
-$kmr = query("SELECT * FROM kamera WHERE id = $id")[0];
-$merek= query("SELECT * FROM merek");
+$pixel = query("SELECT * FROM pixel WHERE id = $id")[0];
 
 ?>
 
@@ -36,7 +35,7 @@ $merek= query("SELECT * FROM merek");
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ubah Data Produk</title>
-	<link rel="stylesheet" type="text/css" href="../addchange_items.css">
+	<link rel="stylesheet" type="text/css" href="addchange_items.css">
 	<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,42 +74,42 @@ $merek= query("SELECT * FROM merek");
 		<form action="" method="post" enctype="multipart/form-data">
 			<div class="image-preview">
 					<label for="gambar">
-						<img src="../<?php echo $kmr["gambar"] ?>" id="image-preview" alt="gambar kamera">
+						<img src="<?php echo $pixel["image"] ?>" id="image-preview" alt="gambar kamera">
 						<div>Pilih atau drop gambar</div>
 						<input type="file" name="gambar" id="gambar" accept="image/*">
 					</label>
 			</div>
 			<div class="row">
-				<input type="hidden" name="id" value="<?php echo $kmr["id"]; ?>">
-				<input type="hidden" name="gambarLama" value="<?php echo $kmr["gambar"]; ?>">
+				<input type="hidden" name="id" id="id" value="<?php echo $pixel["id"]; ?>">
+				<input type="hidden" name="oldImage" value="<?php echo $pixel["image"]; ?>">
 
-				<div class="input-group">
+				<!-- <div class="input-group">
 					<label for="merek">merek : </label>
 					<select class="input" name="merek_id" id="merek">
 					<?php foreach($merek as $mrk) : ?>
-						<option <?php echo $kmr['merek_id'] == $mrk['id'] ? 'selected' : '' ?> value="<?php echo $mrk['id'] ?>"><?php echo $mrk["merek"] ?></option>
+						<option <?php echo $pixel['merek_id'] == $mrk['id'] ? 'selected' : '' ?> value="<?php echo $mrk['id'] ?>"><?php echo $mrk["merek"] ?></option>
 					<?php endforeach; ?>
 					</select>
-				</div>
+				</div> -->
 				<div class="input-group">
-					<label for="tipe">tipe : </label>
-					<input class="input" type="text" name="tipe" id="tipe" required autocomplete="off" value="<?php echo $kmr["tipe"] ?>"> 
+					<label for="char">Character Name : </label>
+					<input class="input" type="text" name="char" id="char" required autocomplete="off" value="<?php echo $pixel["char"] ?>">> 
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-group">
-					<label for="kondisi">kondisi : </label>
-					<input class="input" type="text" name="kondisi" id="kondisi" required autocomplete="off" value="<?php echo $kmr['kondisi'] ?>"> 
+					<label for="anime">Anime Name : </label>
+					<input class="input" type="text" name="anime" id="anime" required autocomplete="off" value="<?php echo $pixel['anime'] ?>"> 
 				</div>
 				<div class="input-group">
-					<label for="harga">harga : </label>
-				<input class="input" type="text" name="harga" id="harga" required autocomplete="off" value="<?php echo $kmr["harga"] ?>"> 
+					<label for="world">World : </label>
+				<input class="input" type="text" name="world" id="world" required autocomplete="off" value="<?php echo $pixel["world"] ?>"> 
 				</div>
 			</div>
-			<div class="input-group">
-				<label for="deskripsi">deskripsi : </label>
-				<textarea class="input" rows="6" cols="30" name="deskripsi" id="deskripsi" required><?php echo $kmr["deskripsi"] ?></textarea>
-			</div>
+			<!-- <div class="input-group">
+				<label for="deskripsi">Author : </label>
+				<textarea class="input" rows="6" cols="30" name="user" id="user" required><?php echo $pixel["user"] ?></textarea>
+			</div> -->
 				<button type="submit" name="submit" onclick="return confirm('Apakah anda yakin ingin mengubah data produk?')">Ubah Data Prduk</button>
 		</form>
 	</div>

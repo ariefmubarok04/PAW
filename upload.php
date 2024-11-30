@@ -1,5 +1,5 @@
 <?php
-require ('functions.php');
+require ('component/functions.php');
 if (!isset($_SESSION["login"])) {
 	header('Location: login.php');
 	exit;
@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
 </head>
 <body>
     <?php
-		include "header.php"
+		include "component/header.php"
 	?>
 	<div class="container">
 		<header>
@@ -47,12 +47,26 @@ if (isset($_POST["submit"])) {
 		
 		<form action="" method="post" enctype="multipart/form-data">
             <div class="group">
-                <label for="image">
+                <!-- <label for="image">
                     <img src="" id="image-preview" alt="">
                     <div>Choose your Image</div>
                     <input type="file" name="image" id="image" accept="image/*">
-                </label>
+                </label> -->
                 <table>
+                    <tr>
+                        <td>
+                            <label for="image">Render Link</label>
+                        </td>
+                        <td>:</td>
+                        <td>
+                            <input class="input" type="text" name="image" id="image" placeholder="s3.amazonaws.com/world.growtopiagame.com/weeaboo.png" required autocomplete="off">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>example: s3.amazonaws.com/world.growtopiagame.com/weeaboo.png</td>
+                    </tr>
                     <tr>
                         <!-- <div class="input-group">
                             <label for="merek">merek</label>
@@ -105,12 +119,10 @@ if (isset($_POST["submit"])) {
                             <input type="hidden" name="user" id="user" value="<?= $_SESSION['user']['id'] ?>" />
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <button type="submit" name="submit">Upload</button>
-                        </td>
-                    </tr>
                 </table>
+                <div style="display: flex; justify-content: end;">
+                    <button type="submit" name="submit">Upload</button>
+                </div>
             </div>
 		</form>
 	</div>

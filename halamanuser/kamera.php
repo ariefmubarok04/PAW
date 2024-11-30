@@ -1,6 +1,6 @@
 <?php 
 
-require ('../functions.php');
+require ('../component/functions.php');
 
 if (!isset($_GET["id"]) ) {
 	header("Location: halaman_produk.php");

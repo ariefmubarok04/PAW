@@ -1,6 +1,6 @@
 <?php 
 
-require ('functions.php');
+require ('component/functions.php');
 $kamera = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id ORDER BY id");
 $new_product = $kamera[count($kamera)-1];
 $top_seller = query("SELECT kamera.*, merek.merek FROM kamera JOIN merek ON merek.id = kamera.merek_id WHERE top_seller = 1")[0];
@@ -29,7 +29,7 @@ if (isset($_GET["cari"])) {
 </head>
 <body>
 	<?php
-		include "header.php"
+		include "component/header.php"
 	?>
 	<div class="gateway" style="position: fixed; top: 20; right: 0; margin-right: 30px;">
 		Filter
@@ -156,7 +156,7 @@ if (isset($_GET["cari"])) {
 		</div>
     </div>
 	<?php
-		include "footer.php"
+		include "component/footer.php"
 	?>
 	<!-- End of Navigation Bar -->
 	<!-- <section class="landing-image">
